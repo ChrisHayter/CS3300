@@ -2,26 +2,32 @@ require 'rails_helper'
 
 RSpec.feature "Projects", type: :feature do
 
-  # context "Login" do
-  #   scenario "should sign up" do
-  #     visit root_path
-  #     click_link 'Sign Up'
-  #     within("form") do
-  #       fill_in "Email", with: "email@email.com"
-  #       fill_in "Password", with: "password"
-  #       fill_in "Password confirmation", with: "password"
-  #       click_button "Sign up"
-  #     end
-  #     expect(page).to have_content("Welcome! You have signed up successfully.")
-  #   end
+  context "Login" do
+    scenario "should sign up" do
+      visit root_path
+      click_link 'Sign Up'
+      within("form") do
+        fill_in "Email", with: "test@test.com"
+        fill_in "Password", with: "password"
+        fill_in "Password confirmation", with: "password"
+        click_button "Sign up"
+      end
+      expect(page).to have_content("Welcome! You have signed up successfully.")
+    end
 
-  #   scenario "should log in" do
-  #     user = FactoryBot.Create(:user)
-  #     login_as(user)
+    scenario "should log in" do
+      user = FactoryBot.Create(:user)
+      login_as(user)
+      visit root_path
+      expect(page).to have_content("Logged in")
+    end
+  end
 
 
   context "Create new project" do
     before(:each) do
+      user = FactoryBot.Create(:user)
+      login_as(user)
       visit new_project_path
       within("form") do
         fill_in "Title", with: "Test title"
@@ -43,6 +49,8 @@ RSpec.feature "Projects", type: :feature do
   context "Update project" do
     let(:project) { Project.create(title: "Test title", description: "Test content") }
     before(:each) do
+      user = FactoryBot.Create(:user)
+      login_as(user)
       visit edit_project_path(project)
     end
 
@@ -66,6 +74,8 @@ RSpec.feature "Projects", type: :feature do
   context "Remove existing project" do
     let!(:project) { Project.create(title: "Test title", description: "Test content") }
     scenario "remove project" do
+      user = FactoryBot.Create(:user)
+      login_as(user)
       visit projects_path
       click_link "Destroy"
       expect(page).to have_content("Project was successfully destroyed")
