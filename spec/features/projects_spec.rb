@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Projects", type: :feature do
+  login_user
 
   context "Login" do
     scenario "should sign up" do
