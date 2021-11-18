@@ -6,28 +6,27 @@ def login_user
 end
 
 RSpec.feature "Projects", type: :feature do
-  #login_user
 
-  context "Login" do
-    scenario "should sign up" do
-      visit root_path
-      click_link 'New Project'
-      click_link 'Sign Up'
-      within("form") do
-        fill_in "Email", with: "test@user.com"
-        fill_in "Password", with: "qwerty"
-        fill_in "Password confirmation", with: "qwerty"
-        click_button "Sign up"
-      end
-      expect(page).to have_content("Welcome! You have signed up successfully.")
-    end
+  # context "Login" do
+  #   scenario "should sign up" do
+  #     visit root_path
+  #     click_link 'New Project'
+  #     click_link 'Sign Up'
+  #     within("form") do
+  #       fill_in "Email", with: "test@user.com"
+  #       fill_in "Password", with: "qwerty"
+  #       fill_in "Password confirmation", with: "qwerty"
+  #       click_button "Sign up"
+  #     end
+  #     expect(page).to have_content("Welcome! You have signed up successfully.")
+  #   end
 
-    scenario "should log in" do
-      login_user
-      visit root_path
-      expect(page).to have_content("Logged in")
-    end
-  end
+  #   scenario "should log in" do
+  #     login_user
+  #     visit root_path
+  #     expect(page).to have_content("Logged in")
+  #   end
+  # end
 
 
   context "Create new project" do
