@@ -1,7 +1,25 @@
-
 require 'rails_helper'
 
 RSpec.feature "Projects", type: :feature do
+
+  # context "Login" do
+  #   scenario "should sign up" do
+  #     visit root_path
+  #     click_link 'Sign Up'
+  #     within("form") do
+  #       fill_in "Email", with: "email@email.com"
+  #       fill_in "Password", with: "password"
+  #       fill_in "Password confirmation", with: "password"
+  #       click_button "Sign up"
+  #     end
+  #     expect(page).to have_content("Welcome! You have signed up successfully.")
+  #   end
+
+  #   scenario "should log in" do
+  #     user = FactoryBot.Create(:user)
+  #     login_as(user)
+
+
   context "Create new project" do
     before(:each) do
       visit new_project_path
