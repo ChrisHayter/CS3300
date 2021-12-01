@@ -10,17 +10,24 @@
   </head>
 
   <body>
-  <p class = "navbar-text float-right">
+    <style type="text/css">
+      u1
+      {
+        text-align: right;
+        list-style-type: none;
+      }
+    </style>
     <% if user_signed_in? %>
-      Logged in as <%= current_user.email %>.
-      <% link_to 'Edit Profile', edit_user_registration_path, :class => 'navbar-link' %> | 
-      <% link_to 'Logout', destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
+      <u1>
+      <li><%= link_to current_user.email, edit_user_registration_path(current_user), class: "user-name" %></li>
+      <li><%= link_to "Log out", destroy_user_session_path, method: :delete%></li>
+      </u1>
     <% else %>
-      <% link_to 'Sign up', new_user_registration_path, :class => 'navbar-link' %> |
-      <% link_to 'Login', new_user_session_path, :class => 'navbar-link' %>
-    <% end %>
-  </p>    
-    
+      <u1>
+      <li><%= link_to "Sign in", new_user_session_path %></li>
+      <li><%= link_to "Sign up", new_user_registration_path %></li>
+      </u1>
+    <% end %>  
     <%= yield %>
   </body>
 </html>
