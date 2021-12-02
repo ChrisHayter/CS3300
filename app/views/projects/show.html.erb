@@ -1,14 +1,26 @@
 <p id="notice"><%= notice %></p>
 
+
+<div class='d-flex'>
+  <div class='jumbotron jumbotron-fluid'>
+    <div class='container'>
+      <h3><%= @project.title %></h3>
+      <%= @project.description %>
+    </div>
+  </div>
+</div>
+
+<!--
 <p>
-  <!-- <strong>Title:</strong> -->
+  <strong>Title:</strong>
   <h3><%= @project.title %></h3>
 </p>
 
 <p>
-  <!-- <strong>Description:</strong> -->
+  <strong>Description:</strong>
   <%= @project.description %>
 </p>
+-->
 
 <% if user_signed_in? %>
   <%= link_to 'Edit', edit_project_path(@project) %> |
