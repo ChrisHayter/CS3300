@@ -11,6 +11,19 @@
     </div>
   <% end %>
 
+<div class='mb-auto'>
+  <label for='title' class='form-label'>Title</label>
+  <input type='text' class='form-control' name='project[title]' id='Title'>
+</div>
+<div class='mb-auto'>
+  <label for='description' class='form-label'>Description</label>
+  <textarea class='form-control' name='project[description]' id='Description' rows='4' ></textarea>
+</div>
+
+<button type='submit' class='btn btn-info'>Submit</button>
+
+
+  <!--
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
@@ -24,4 +37,5 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+  -->
 <% end %>

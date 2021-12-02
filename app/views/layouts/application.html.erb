@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AppName</title>
+    <title>My Portfolio</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,24 +10,25 @@
   </head>
 
   <body>
-    <style type="text/css">
-      u1
-      {
-        text-align: right;
-        list-style-type: none;
-      }
-    </style>
-    <% if user_signed_in? %>
-      <u1>
-      <li><%= link_to current_user.email, edit_user_registration_path(current_user), class: "user-name" %></li>
-      <li><%= link_to "Log out", destroy_user_session_path, method: :delete%></li>
-      </u1>
-    <% else %>
-      <u1>
-      <li><%= link_to "Sign in", new_user_session_path %></li>
-      <li><%= link_to "Sign up", new_user_registration_path %></li>
-      </u1>
-    <% end %>  
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="/projects">Home</a>
+        <div class="align-right row">
+         <% if user_signed_in? %>     
+            <!-- <%= link_to current_user.email, edit_user_registration_path(current_user), class: "user-name" %> -->
+            <%= button_to "Sign out", destroy_user_session_path, method: :delete, :class => "btn btn-outline-light btn-defualt"%>
+            <%= button_to "New Project", new_project_path, method: :get, :class => "btn btn-outline-light btn-defualt"%>
+          <% else %>
+            <%= button_to "Sign in", new_user_session_path, method: :get, :class => "btn btn-outline-light btn-default" %>
+            <%= button_to "Sign up", new_user_registration_path, method: :get, :class => "btn btn-outline-light btn-defualt" %>
+          <% end %>
+        </div>
+      </div>
+    </nav>
+
+  <div class="container">
     <%= yield %>
+  </div>
+
   </body>
 </html>
